@@ -34,17 +34,17 @@ public class PartidaXadrez {
         return (PecaXadrez) capturarPeca;
     }
 
-    private void validarPosicaoInicial(Posicao posicao) {
-        if (!tabuleiro.haPeca(posicao)) {
-            throw new TabuleiroException("Não existe peça na posição de origem");
-        }
-    }
-
     private Peca movimento(Posicao inicial, Posicao posterior) {
         Peca p = tabuleiro.removerPeca(inicial);
         Peca capturarPcea = tabuleiro.removerPeca(posterior);
         tabuleiro.colocarPeca(p, posterior);
         return  capturarPcea;
+    }
+
+    private void validarPosicaoInicial(Posicao posicao) {
+        if (!tabuleiro.haPeca(posicao)) {
+            throw new XadrezException("Não existe peça na posição de origem");
+        }
     }
 
     private  void colocarNovaPeca( char coluna, int fileira, PecaXadrez pecaXadrez) {
