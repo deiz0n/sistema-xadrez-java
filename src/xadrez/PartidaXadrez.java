@@ -29,6 +29,7 @@ public class PartidaXadrez {
     }
 
     private void setupInicial() {
+
         colocarNovaPeca('c', 1, new Torre(tabuleiro, Cores.BRANCO));
         colocarNovaPeca('c', 2, new Torre(tabuleiro, Cores.BRANCO));
         colocarNovaPeca('d', 2, new Torre(tabuleiro, Cores.BRANCO));
@@ -42,6 +43,7 @@ public class PartidaXadrez {
         colocarNovaPeca('e', 7, new Torre(tabuleiro, Cores.PRETO));
         colocarNovaPeca('e', 8, new Torre(tabuleiro, Cores.PRETO));
         colocarNovaPeca('d', 8, new Rei(tabuleiro, Cores.PRETO));
+
     }
 
 }
