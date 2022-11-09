@@ -1,8 +1,6 @@
 package aplicacao;
 
 
-import tabuleirojogo.Posicao;
-import tabuleirojogo.TabuleiroException;
 import xadrez.PartidaXadrez;
 import xadrez.PecaXadrez;
 import xadrez.PosicaoXadrez;
@@ -26,6 +24,9 @@ public class Programa {
                 System.out.print("Inicial: ");
                 PosicaoXadrez inicial = UI.lerPosicaoXadrez(input);
 
+                boolean[][] movimentosPossiveis = pat.movimentosPossiveis(inicial);
+                UI.limparTela();
+                UI.printTabuleiro(pat.getPecas(), movimentosPossiveis);
                 System.out.println("");
                 System.out.print("Posterior: ");
                 PosicaoXadrez posteior = UI.lerPosicaoXadrez(input);

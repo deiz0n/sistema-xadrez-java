@@ -3,7 +3,6 @@ package xadrez;
 import tabuleirojogo.Peca;
 import tabuleirojogo.Posicao;
 import tabuleirojogo.Tabuleiro;
-import tabuleirojogo.TabuleiroException;
 import xadrez.xadrez.pecas.Rei;
 import xadrez.xadrez.pecas.Torre;
 
@@ -26,10 +25,17 @@ public class PartidaXadrez {
         return mat;
     }
 
+    public boolean[][] movimentosPossiveis(PosicaoXadrez posicaoInicial) {
+        Posicao posicao = posicaoInicial.toPosicao();
+        validarPosicaoInicial(posicao);
+        return tabuleiro.peca(posicao).movimentosPossiveis();
+    }
+
     public PecaXadrez moverPecaXadrez(PosicaoXadrez posicaoInicial, PosicaoXadrez posicaoPosterior) {
         Posicao inicial = posicaoInicial.toPosicao();
         Posicao posterior = posicaoPosterior.toPosicao();
         validarPosicaoInicial(inicial);
+        validarPosicaoPosterior(inicial, posterior);
         Peca capturarPeca = movimento(inicial, posterior);
         return (PecaXadrez) capturarPeca;
     }
@@ -44,6 +50,15 @@ public class PartidaXadrez {
     private void validarPosicaoInicial(Posicao posicao) {
         if (!tabuleiro.haPeca(posicao)) {
             throw new XadrezException("Não existe peça na posição de origem");
+        }
+        if (!tabuleiro.peca(posicao).existeAlgumMovimento()) {
+            throw new XadrezException("Não existe movimentos possíveis para a peça selecionada");
+        }
+    }
+
+    private void validarPosicaoPosterior(Posicao inicial, Posicao posterior) {
+        if (!tabuleiro.peca(inicial).possivelMovimento(posterior)) {
+            throw new XadrezException("A peça escolhida não pode ser movida para a posição desejada");
         }
     }
 

@@ -1,6 +1,5 @@
 package xadrez.xadrez.pecas;
 
-import tabuleirojogo.Peca;
 import tabuleirojogo.Tabuleiro;
 import xadrez.Cores;
 import xadrez.PecaXadrez;
@@ -17,4 +16,9 @@ public class Rei extends PecaXadrez {
         return "R";
     }
 
+    @Override
+    public boolean[][] movimentosPossiveis() {
+        boolean[][] mat = new boolean[getTabuleiro().getFileiras()][getTabuleiro().getColunas()];
+        return mat;
+    }
 }
