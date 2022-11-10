@@ -51,23 +51,14 @@ public class PartidaXadrez {
         if (!tabuleiro.haPeca(posicao)) {
             throw new XadrezException("Não existe peça na posição de origem");
         }
-<<<<<<< HEAD
         if (!tabuleiro.peca(posicao).existeAlgumMovimento()) {
             throw new XadrezException("Não existe movimentos possíveis para a peça selecionada");
-=======
-        if (!tabuleiro.peca(posicao).existePossibilidadeMovimento()) {
-            throw new XadrezException("Não existe movimentos possíveis para peça selecionada");
->>>>>>> c21f9be80e6095336a20e3afff9e02e0b1b03aab
         }
     }
 
     private void validarPosicaoPosterior(Posicao inicial, Posicao posterior) {
         if (!tabuleiro.peca(inicial).possivelMovimento(posterior)) {
-<<<<<<< HEAD
             throw new XadrezException("A peça escolhida não pode ser movida para a posição desejada");
-=======
-            throw new XadrezException("A peça escolhida não pode ser movida para a posição de destino");
->>>>>>> c21f9be80e6095336a20e3afff9e02e0b1b03aab
         }
     }
 

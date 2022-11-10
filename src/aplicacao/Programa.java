@@ -1,6 +1,5 @@
 package aplicacao;
 
-
 import xadrez.PartidaXadrez;
 import xadrez.PecaXadrez;
 import xadrez.PosicaoXadrez;
@@ -43,7 +42,5 @@ public class Programa {
             }
         }
 
-
     }
-
 }
