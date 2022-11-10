@@ -39,7 +39,7 @@ public class Torre extends PecaXadrez {
             p.setColuna(p.getColuna() - 1);
         }
         if (getTabuleiro().posicaoExistente(p) && haPecaOponente(p)) {
-            mat[p.getColuna()][p.getColuna()] = true;
+            mat[p.getFileira()][p.getColuna()] = true;
         }
 
         // Movimento para direita
@@ -49,7 +49,7 @@ public class Torre extends PecaXadrez {
             p.setColuna(p.getColuna() + 1);
         }
         if (getTabuleiro().posicaoExistente(p) && haPecaOponente(p)) {
-            mat[p.getColuna()][p.getColuna()] = true;
+            mat[p.getFileira()][p.getColuna()] = true;
         }
 
         // Movimento para baixo
