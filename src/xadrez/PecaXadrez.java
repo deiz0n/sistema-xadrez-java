@@ -6,9 +6,10 @@ import tabuleirojogo.Tabuleiro;
 
 public abstract class PecaXadrez extends Peca {
 
-    // Variável
+    // Variáveis
 
     private Cores cores;
+    private int contMovimentos;
 
     // Construtor
 
@@ -25,6 +26,22 @@ public abstract class PecaXadrez extends Peca {
 
     public PosicaoXadrez getPosicaoXadrez() {
         return  PosicaoXadrez.fromPosicao(posicao);
+    }
+
+    public int getContMovimentos() {
+        return contMovimentos;
+    }
+
+    // Método responsável por aumentar o número de movimentos
+
+    public void addContMovimentos() {
+        contMovimentos++;
+    }
+
+    // Método responsável por diminuir o número de movimentos
+
+    public void remContMovimentos() {
+        contMovimentos--;
     }
 
     // Verifica se há alguma peça do oponente em tal posição
