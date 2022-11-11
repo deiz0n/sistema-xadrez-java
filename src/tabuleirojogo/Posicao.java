@@ -2,13 +2,19 @@ package tabuleirojogo;
 
 public class Posicao {
 
+    // Variáveis
+
     private int fileira;
     private int coluna;
+
+    // Construtor
 
     public Posicao(int fileira, int coluna) {
         this.fileira = fileira;
         this.coluna = coluna;
     }
+
+    // Getters e Setters
 
     public int getFileira() {
         return fileira;
