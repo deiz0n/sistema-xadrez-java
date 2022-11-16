@@ -3,6 +3,7 @@ package xadrez;
 import tabuleirojogo.Peca;
 import tabuleirojogo.Posicao;
 import tabuleirojogo.Tabuleiro;
+import xadrez.xadrez.pecas.Peao;
 import xadrez.xadrez.pecas.Rei;
 import xadrez.xadrez.pecas.Torre;
 
@@ -226,12 +227,29 @@ public class PartidaXadrez {
 
     private void setupInicial() {
 
-        colocarNovaPeca('h', 7, new Torre(tabuleiro, Cores.BRANCO));
-        colocarNovaPeca('d', 1, new Torre(tabuleiro, Cores.BRANCO));
-        colocarNovaPeca('e', 1, new Rei(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('a', 2, new Peao(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('b', 2, new Peao(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('c', 2, new Peao(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('d', 2, new Peao(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('e', 2, new Peao(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('f', 2, new Peao(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('g', 2, new Peao(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('h', 2, new Peao(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('a', 1, new Torre(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('h', 1, new Torre(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('d', 1, new Rei(tabuleiro, Cores.BRANCO));
 
-        colocarNovaPeca('b', 8, new Torre(tabuleiro, Cores.PRETO));
-        colocarNovaPeca('a', 8, new Rei(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('a', 7, new Peao(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('b', 7, new Peao(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('c', 7, new Peao(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('d', 7, new Peao(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('e', 7, new Peao(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('f', 7, new Peao(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('g', 7, new Peao(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('h', 7, new Peao(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('a', 8, new Torre(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('h', 8, new Torre(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('d', 8, new Rei(tabuleiro, Cores.PRETO));
 
     }
 
