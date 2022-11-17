@@ -26,7 +26,7 @@ public class Bispo extends PecaXadrez {
         }
 
         // Movimento para nordeste
-        p.setValores(posicao.getFileira(), posicao.getColuna() + 1);
+        p.setValores(posicao.getFileira() - 1, posicao.getColuna() + 1);
         while (getTabuleiro().posicaoExistente(p) && !getTabuleiro().haPeca(p)) {
             mat[p.getFileira()][p.getColuna()] = true;
             p.setValores(p.getFileira() - 1, p.getColuna() + 1);
