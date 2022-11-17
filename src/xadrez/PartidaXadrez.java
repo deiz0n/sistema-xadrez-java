@@ -102,13 +102,31 @@ public class PartidaXadrez {
         PecaXadrez p = (PecaXadrez)tabuleiro.removerPeca(inicial);
         p.addContMovimentos();
         Peca capturarPeca = tabuleiro.removerPeca(posterior);
+        tabuleiro.colocarPeca(p, posterior);
 
         if (capturarPeca != null) {
             pecasNoTabuleiro.remove(capturarPeca);
             pecasCapturadas.add(capturarPeca);
         }
 
-        tabuleiro.colocarPeca(p, posterior);
+        // Movimento especial: Roque pequeno
+        if (p instanceof  Rei && posterior.getColuna() == inicial.getColuna() + 2) {
+            Posicao inicialT = new Posicao(inicial.getFileira(), inicial.getColuna() + 3);
+            Posicao posteriorT = new Posicao(inicial.getFileira(), inicial.getColuna() + 1);
+            PecaXadrez torre = (PecaXadrez)tabuleiro.removerPeca(inicialT);
+            tabuleiro.colocarPeca(torre, posteriorT);
+            torre.addContMovimentos();
+        }
+
+        // Movimento especial: Roque garnde
+        if (p instanceof  Rei && posterior.getColuna() == inicial.getColuna() - 2) {
+            Posicao inicialT = new Posicao(inicial.getFileira(), inicial.getColuna() - 4);
+            Posicao posteriorT = new Posicao(inicial.getFileira(), inicial.getColuna() - 1);
+            PecaXadrez torre = (PecaXadrez)tabuleiro.removerPeca(inicialT);
+            tabuleiro.colocarPeca(torre, posteriorT);
+            torre.addContMovimentos();
+        }
+
         return capturarPeca;
     }
 
@@ -124,6 +142,25 @@ public class PartidaXadrez {
             pecasCapturadas.remove(pecaCapturada);
             pecasNoTabuleiro.add(pecaCapturada);
         }
+
+        // Movimento especial: Roque pequeno
+        if (p instanceof  Rei && posterior.getColuna() == inicial.getColuna() + 2) {
+            Posicao inicialT = new Posicao(inicial.getFileira(), inicial.getColuna() + 3);
+            Posicao posteriorT = new Posicao(inicial.getFileira(), inicial.getColuna() + 1);
+            PecaXadrez torre = (PecaXadrez)tabuleiro.removerPeca(posteriorT);
+            tabuleiro.colocarPeca(torre, inicialT);
+            torre.remContMovimentos();
+        }
+
+        // Movimento especial: Roque garnde
+        if (p instanceof  Rei && posterior.getColuna() == inicial.getColuna() - 2) {
+            Posicao inicialT = new Posicao(inicial.getFileira(), inicial.getColuna() - 4);
+            Posicao posteriorT = new Posicao(inicial.getFileira(), inicial.getColuna() - 1);
+            PecaXadrez torre = (PecaXadrez)tabuleiro.removerPeca(posteriorT);
+            tabuleiro.colocarPeca(torre, inicialT);
+            torre.remContMovimentos();
+        }
+
     }
 
     // Método responsável pela validação da posição inicial
@@ -239,7 +276,7 @@ public class PartidaXadrez {
         colocarNovaPeca('b', 1, new Cavalo(tabuleiro, Cores.BRANCO));
         colocarNovaPeca('f', 1, new Bispo(tabuleiro, Cores.BRANCO));
         colocarNovaPeca('g', 1, new Cavalo(tabuleiro, Cores.BRANCO));
-        colocarNovaPeca('e', 1, new Rei(tabuleiro, Cores.BRANCO));
+        colocarNovaPeca('e', 1, new Rei(tabuleiro, Cores.BRANCO, this));
         colocarNovaPeca('d', 1, new Dama(tabuleiro, Cores.BRANCO));
 
         colocarNovaPeca('a', 7, new Peao(tabuleiro, Cores.PRETO));
@@ -256,7 +293,7 @@ public class PartidaXadrez {
         colocarNovaPeca('b', 8, new Cavalo(tabuleiro, Cores.PRETO));
         colocarNovaPeca('f', 8, new Bispo(tabuleiro, Cores.PRETO));
         colocarNovaPeca('g', 8, new Cavalo(tabuleiro, Cores.PRETO));
-        colocarNovaPeca('e', 8, new Rei(tabuleiro, Cores.PRETO));
+        colocarNovaPeca('e', 8, new Rei(tabuleiro, Cores.PRETO, this));
         colocarNovaPeca('d', 8, new Dama(tabuleiro, Cores.PRETO));
 
     }

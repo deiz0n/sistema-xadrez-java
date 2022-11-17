@@ -1,15 +1,19 @@
 package xadrez.xadrez.pecas;
 
+import tabuleirojogo.Peca;
 import tabuleirojogo.Posicao;
 import tabuleirojogo.Tabuleiro;
 import xadrez.Cores;
+import xadrez.PartidaXadrez;
 import xadrez.PecaXadrez;
 
 public class Rei extends PecaXadrez {
 
+    private PartidaXadrez partidaXadrez;
 
-    public Rei(Tabuleiro tabuleiro, Cores cores) {
+    public Rei(Tabuleiro tabuleiro, Cores cores, PartidaXadrez partidaXadrez) {
         super(tabuleiro, cores);
+        this.partidaXadrez = partidaXadrez;
     }
 
     @Override
@@ -20,6 +24,12 @@ public class Rei extends PecaXadrez {
     private boolean podeMover(Posicao posicao) {
         PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);
         return p == null || p.getCores() != getCores();
+    }
+
+    // Método responável por verificar se é possível realizar o Roque
+    private boolean torreRoqueTeste(Posicao posicao) {
+        PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);
+        return p != null && p instanceof Torre && p.getCores() == getCores() && p.getContMovimentos() == 0;
     }
 
     @Override
@@ -77,6 +87,31 @@ public class Rei extends PecaXadrez {
             mat[p.getFileira()][p.getColuna()] = true;
         }
 
+        // Movimento especial Roque
+        if (getContMovimentos() == 0 && !partidaXadrez.getCheck()) {
+
+            // Roque pequeno
+            Posicao torre1 = new Posicao(posicao.getFileira(), posicao.getColuna() + 3);
+            if (torreRoqueTeste(torre1)) {
+                Posicao p1 = new Posicao(posicao.getFileira(), posicao.getColuna() + 1);
+                Posicao p2 = new Posicao(posicao.getFileira(), posicao.getColuna() + 2);
+                if (getTabuleiro().peca(p1) == null && getTabuleiro().peca(p2) == null) {
+                    mat[posicao.getFileira()][posicao.getColuna() + 2] = true;
+                }
+            }
+
+            // Roque grande
+            Posicao torre2 = new Posicao(posicao.getFileira(), posicao.getColuna() - 4);
+            if (torreRoqueTeste(torre2)) {
+                Posicao p1 = new Posicao(posicao.getFileira(), posicao.getColuna() - 1);
+                Posicao p2 = new Posicao(posicao.getFileira(), posicao.getColuna() - 2);
+                Posicao p3 = new Posicao(posicao.getFileira(), posicao.getColuna() - 3);
+                if (getTabuleiro().peca(p1) == null && getTabuleiro().peca(p2) == null  && getTabuleiro().peca(p3) == null){
+                    mat[posicao.getFileira()][posicao.getColuna() - 2] = true;
+                }
+            }
+
+        }
         return mat;
     }
 }
