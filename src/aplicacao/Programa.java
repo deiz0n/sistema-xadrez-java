@@ -5,7 +5,6 @@ import xadrez.PecaXadrez;
 import xadrez.PosicaoXadrez;
 import xadrez.XadrezException;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -15,10 +14,12 @@ public class Programa {
 
     public static void main(String[] args) {
 
+        // Objetos e lista
         Scanner input = new Scanner(System.in);
         PartidaXadrez pat = new PartidaXadrez();
         List<PecaXadrez> capturadas = new ArrayList<>();
 
+        // Laço responsável por printar a partida e o layout
         while (!pat.getCheckMate()) {
             try {
                 UI.limparTela();
@@ -36,10 +37,12 @@ public class Programa {
 
                 PecaXadrez capturarPeca = pat.moverPecaXadrez(inicial, posteior);
 
+                // Adiciona uma peça à lista de peças capturadas
                 if (capturarPeca != null) {
                     capturadas.add(capturarPeca);
                 }
 
+                // Aplica a promoção
                 if (pat.getPromocao() != null) {
                     System.out.print("Digite a peca para promoção (D/T/B/C): ");
                     String tipo = input.nextLine().toUpperCase();
@@ -61,6 +64,7 @@ public class Programa {
             }
         }
 
+        // Rretira os possíveis movimentos de uma peça após a realização de um movimento
         UI.limparTela();
         UI.printPartida(pat, capturadas);
 

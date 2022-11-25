@@ -8,19 +8,22 @@ import xadrez.PecaXadrez;
 
 public class Peao extends PecaXadrez {
 
+    // Variável
     private PartidaXadrez partidaXadrez;
 
+    // Construtor
     public Peao(Tabuleiro tabuleiro, Cores cores, PartidaXadrez partidaXadrez) {
         super(tabuleiro, cores);
         this.partidaXadrez = partidaXadrez;
     }
 
+    // Método responsável por determinar os possíveis movimentos dos peões no tabuleiro
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] mat = new boolean[getTabuleiro().getFileiras()][getTabuleiro().getColunas()];
         Posicao p = new Posicao(0, 0);
         if (getCores() == Cores.BRANCO) {
-            // Movimento para frente
+            // Movimento para frente (para peões da cor branca)
             p.setValores(posicao.getFileira() - 1, posicao.getColuna());
             if (getTabuleiro().posicaoExistente(p) && !getTabuleiro().haPeca(p)) {
                 mat[p.getFileira()][p.getColuna()] = true;
@@ -58,7 +61,7 @@ public class Peao extends PecaXadrez {
             }
 
         } else {
-            // Movimento para frente
+            // Movimento para frente (para peões da cor preta)
             p.setValores(posicao.getFileira() + 1, posicao.getColuna());
             if (getTabuleiro().posicaoExistente(p) && !getTabuleiro().haPeca(p)) {
                 mat[p.getFileira()][p.getColuna()] = true;
@@ -98,6 +101,7 @@ public class Peao extends PecaXadrez {
         return mat;
     }
 
+    // Método responsável pela representação dos peões no tabuleiro
     @Override
     public String toString() {
         return "P";

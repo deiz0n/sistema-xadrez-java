@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 public class UI {
 
+    // Cores disponíveis para utilização do projeto
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -32,11 +33,13 @@ public class UI {
     public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
     public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+    // Método responsável por limpar a tela
     public static void limparTela() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    // Método responsável por ler as posições dadas pelo jogador
     public static PosicaoXadrez lerPosicaoXadrez(Scanner input) {
         try {
             String s = input.nextLine();
@@ -49,6 +52,7 @@ public class UI {
         }
     }
 
+    // Método responsável por mostrar a partida
     public static void printPartida(PartidaXadrez partidaXadrez, List<PecaXadrez> capturadas) {
         printTabuleiro(partidaXadrez.getPecas());
         System.out.println("");
@@ -67,6 +71,7 @@ public class UI {
         }
     }
 
+    // Método responsável por printar o tabuleiro
     public static void printTabuleiro(PecaXadrez[][] pecas) {
         for (int i=0; i < pecas.length; i++) {
             System.out.print(8-i + " ");
@@ -78,6 +83,7 @@ public class UI {
         System.out.println("  a b c d e f g h");
     }
 
+    // Método responsável por printar o tabuleiro com os possíveis movimentos de determinada peça
     public static void printTabuleiro(PecaXadrez[][] pecas, boolean[][] movimentosPossiveis) {
         for (int i=0; i < pecas.length; i++) {
             System.out.print(8-i + " ");
@@ -89,6 +95,7 @@ public class UI {
         System.out.println("  a b c d e f g h");
     }
 
+    // Método responsável pela representação das peças no tabuleiro
     private static void printPeca(PecaXadrez pecas, boolean background) {
         if (background) {
             System.out.print(ANSI_BLUE_BACKGROUND);
@@ -107,6 +114,7 @@ public class UI {
         System.out.print(" ");
     }
 
+    // Método resposável por mostar as peças capturadas
     private static void printPecaCapturada(List<PecaXadrez> capturadas) {
         List<PecaXadrez> branco = capturadas.stream().filter(x -> x.getCores() == Cores.BRANCO).collect(Collectors.toList());
         List<PecaXadrez> preto = capturadas.stream().filter(x -> x.getCores() == Cores.PRETO).collect(Collectors.toList());

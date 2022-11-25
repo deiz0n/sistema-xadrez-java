@@ -106,7 +106,6 @@ public class PartidaXadrez {
             }
         }
 
-
         check = (checkTeste(oponente(jogadorAtual))) ? true : false;
 
         if (checkMateTeste(oponente(jogadorAtual))) {
@@ -121,9 +120,10 @@ public class PartidaXadrez {
         } else {
             enPassantVuneravel = null;
         }
-
         return (PecaXadrez) capturarPeca;
     }
+
+    // Método responsável por adicionar a peça ao tabuleiro quando há promoção
 
     public PecaXadrez colocarNovaPeca(String tipo) {
         if (promocao == null) {
@@ -143,6 +143,8 @@ public class PartidaXadrez {
 
         return novaPeca;
     }
+
+    // Método responsável por determinar as possíveis peças quando há promoção
 
     private PecaXadrez novaPeca(String tipo, Cores cor) {
         if (tipo.equals("D")) return new Dama(tabuleiro, cor);
@@ -260,7 +262,7 @@ public class PartidaXadrez {
         }
     }
 
-    // Método responsável poela validação da posição final
+    // Método responsável pela validação da posição final
 
     private void validarPosicaoPosterior(Posicao inicial, Posicao posterior) {
         if (!tabuleiro.peca(inicial).possivelMovimento(posterior)) {

@@ -6,10 +6,13 @@ import xadrez.Cores;
 import xadrez.PecaXadrez;
 
 public class Bispo extends PecaXadrez {
+
+    // Construtor
     public Bispo(Tabuleiro tabuleiro, Cores cores) {
         super(tabuleiro, cores);
     }
 
+    // Método responsável por determinar os movimentos dos bispos no tabuleiro
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] mat = new boolean[getTabuleiro().getFileiras()][getTabuleiro().getColunas()];
@@ -57,6 +60,7 @@ public class Bispo extends PecaXadrez {
         return mat;
     }
 
+    // Método responsável pela representação dos bispos no tabuleiro
     @Override
     public String toString() {
         return "B";

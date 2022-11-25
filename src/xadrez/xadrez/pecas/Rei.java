@@ -9,18 +9,16 @@ import xadrez.PecaXadrez;
 
 public class Rei extends PecaXadrez {
 
+    // Variável
     private PartidaXadrez partidaXadrez;
 
+    // Construtor
     public Rei(Tabuleiro tabuleiro, Cores cores, PartidaXadrez partidaXadrez) {
         super(tabuleiro, cores);
         this.partidaXadrez = partidaXadrez;
     }
 
-    @Override
-    public String toString() {
-        return "R";
-    }
-
+    // Método responsável por verificar os possíveis do rei
     private boolean podeMover(Posicao posicao) {
         PecaXadrez p = (PecaXadrez)getTabuleiro().peca(posicao);
         return p == null || p.getCores() != getCores();
@@ -32,6 +30,7 @@ public class Rei extends PecaXadrez {
         return p != null && p instanceof Torre && p.getCores() == getCores() && p.getContMovimentos() == 0;
     }
 
+    // Método responsável por determinar os possíveis do rei no tabuleiro
     @Override
     public boolean[][] movimentosPossiveis() {
 
@@ -110,9 +109,15 @@ public class Rei extends PecaXadrez {
                     mat[posicao.getFileira()][posicao.getColuna() - 2] = true;
                 }
             }
-
         }
         return mat;
     }
+
+    // Método responsável pela representação do rei no tabuleiro
+    @Override
+    public String toString() {
+        return "R";
+    }
+
 }
 

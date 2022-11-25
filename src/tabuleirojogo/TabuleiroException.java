@@ -1,5 +1,6 @@
 package tabuleirojogo;
 
+// Excecão personalizada
 public class TabuleiroException extends RuntimeException {
 
     private static final long seriaLVersionUID = 1L;

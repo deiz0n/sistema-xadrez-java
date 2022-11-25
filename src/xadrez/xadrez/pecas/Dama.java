@@ -6,10 +6,13 @@ import xadrez.Cores;
 import xadrez.PecaXadrez;
 
 public class Dama extends PecaXadrez {
+
+    // Construtor
     public Dama(Tabuleiro tabuleiro, Cores cores) {
         super(tabuleiro, cores);
     }
 
+    // Método responsável por determinar os possíveis movimentos da dama no tabuleiro
     @Override
     public boolean[][] movimentosPossiveis() {
         boolean[][] mat = new boolean[getTabuleiro().getFileiras()][getTabuleiro().getColunas()];
@@ -97,6 +100,7 @@ public class Dama extends PecaXadrez {
         return mat;
     }
 
+    // Método responsável pela representação da dama no tabuleiro
     @Override
     public String toString() {
         return "D";

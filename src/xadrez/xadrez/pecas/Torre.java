@@ -7,17 +7,13 @@ import xadrez.PecaXadrez;
 
 public class Torre extends PecaXadrez {
 
+    // Construtor
     public Torre(Tabuleiro tabuleiro, Cores cores) {
         super(tabuleiro, cores);
     }
 
+    // Método responsável por determinar os movimentos das torres no tabuleiro
     @Override
-    public String toString() {
-        return "T";
-    }
-
-    @Override
-
     public boolean[][] movimentosPossiveis() {
         boolean[][] mat = new boolean[getTabuleiro().getFileiras()][getTabuleiro().getColunas()];
         Posicao p = new Posicao(0, 0);
@@ -63,4 +59,11 @@ public class Torre extends PecaXadrez {
         }
         return mat;
     }
+
+    // Método responsável pela representação das torres no tabuleiro
+    @Override
+    public String toString() {
+        return "T";
+    }
+
 }

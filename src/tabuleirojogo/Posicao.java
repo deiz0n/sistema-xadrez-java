@@ -3,7 +3,6 @@ package tabuleirojogo;
 public class Posicao {
 
     // Variáveis
-
     private int fileira;
     private int coluna;
 
@@ -15,7 +14,6 @@ public class Posicao {
     }
 
     // Getters e Setters
-
     public int getFileira() {
         return fileira;
     }
@@ -37,10 +35,10 @@ public class Posicao {
         this.coluna = coluna;
     }
 
+    // Retorna as posições do tabuleiro
     @Override
     public String toString() {
         return fileira + ", " + coluna;
     }
-
 
 }
